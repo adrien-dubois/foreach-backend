@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const {isEmail} = require('validator');
 const bcrypt = require('bcrypt');
 
+// User signup table
+
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -31,6 +33,7 @@ const UserSchema = new mongoose.Schema({
         default: 'online'
     }
 }, {minimize: false});
+
 
 UserSchema.pre('save', function(next){
     const user = this;
