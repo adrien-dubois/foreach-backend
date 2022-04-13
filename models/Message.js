@@ -8,3 +8,7 @@ const MessageSchema = new mongoose.Schema({
     date: String,
     to: String
 })
+
+const Message = mongoose.model('Message', MessageSchema);
+
+module.exports = Message
