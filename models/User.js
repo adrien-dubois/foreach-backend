@@ -30,7 +30,7 @@ const UserSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        default: 'online'
+        default: 'En ligne'
     }
 }, {minimize: false});
 
@@ -60,10 +60,10 @@ UserSchema.methods.toJSON = function(){
 
 UserSchema.statics.findByCredentials = async function(email, password) {
     const user = await User.findOne({email});
-    if(!user) throw new Error('Email et mot de passe non valides');
+    if(!user) throw new Error('E-mail et/ou mot de passe non valides');
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if(!isMatch) throw new Error('Email et mot de passe non valides')
+    if(!isMatch) throw new Error('E-mail et/ou mot de passe non valides')
     return user
 }
 
